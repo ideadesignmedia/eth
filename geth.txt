@@ -1,0 +1,10 @@
+mkdir node1
+mkdir node2
+geth init --datadir node1 clique-geth.json
+geth init --datadir node2 clique-geth.json
+bootnode --genkey=boot.key
+bootnode --nodekey=boot.key
+geth account import --datadir node1 private_key.txt
+geth account import --datadir node2 private_key.txt
+geth --datadir node1 --port 30307 --bootnodes enode://7141e2584aa144d9ac234c88e8ad3a2a6acf4587fcc4eed260cd7ab7e0dbc1fa09becdd20499a24b287b02d80305b11e884d6fb9fbf9420345633c96564177f6@127.0.0.1:0?discport=30305 --networkid 177823  --authrpc.port 8552 --mine --miner.etherbase 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21 --password password.txt -unlock 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21
+geth --datadir node2 --port 30309  --bootnodes enode://7141e2584aa144d9ac234c88e8ad3a2a6acf4587fcc4eed260cd7ab7e0dbc1fa09becdd20499a24b287b02d80305b11e884d6fb9fbf9420345633c96564177f6@127.0.0.1:0?discport=30305 --ipcdisable --ws --ws.addr 192.168.0.3 --ws.port 5556 --ws.api eth,net,web3 --ws.origins '*' --ws.rpcprefix '/ws' --authrpc.port 8553 --http --http.api eth,net,web3 --http.corsdomain '*' --http.port 5555 --http.addr 192.168.0.3
