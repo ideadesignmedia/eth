@@ -3,13 +3,13 @@ mkdir node2
 geth init --datadir node1 clique-geth.json
 geth init --datadir node2 clique-geth.json
 bootnode -genkey boot.key
-bootnode -nodekey boot.key -addr :30305+7845
+bootnode -nodekey boot.key -addr 192.168.0.21:30305
 geth account import --datadir node1 private_key.txt
 geth account import --datadir node2 private_key.txt
 
-geth --datadir node1 --port 30307 --bootnodes enode://c0fcd93e42662852c090014f4b50cd7197748c8f9eb48c891d31f1702c840763210426a9d41f5ca4b3708ea4f6f2c61e98adfd8f54c96899e9ab96840792c29d@127.0.0.1:0?discport=30305 --networkid 177823  --authrpc.port 8552 --mine --miner.etherbase 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21 --password password.txt -unlock 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21
+geth --datadir node1 --port 30307 --bootnodes "enode://0d37b648eb95ac8d932e4bebe05beedd5d3f9aed85b61ba42e9d4f11766633583849607f87ea276ec6b4c838f6b19a2eda9bd24bd1a733eaa4c84f2e76528963@192.168.0.21:0?discport=30305" --networkid 177823  --authrpc.port 8552 --mine --miner.etherbase 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21 --password password.txt -unlock 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21
 
-geth --datadir node2 --port 30309 --bootnodes enode://c0fcd93e42662852c090014f4b50cd7197748c8f9eb48c891d31f1702c840763210426a9d41f5ca4b3708ea4f6f2c61e98adfd8f54c96899e9ab96840792c29d@127.0.0.1:0?discport=30305 --networkid 177823 --ipcdisable --ws --ws.addr 192.168.0.3 --ws.port 5556 --ws.api eth,net,web3 --ws.origins '*' --ws.rpcprefix '/ws' --authrpc.port 8553 -7845-http --http.api eth,net,web3 --http.corsdomain '*' --http.port 5555 --http.addr 192.168.0.3 --http.vhosts '*'
+geth --datadir node2 --port 30309 --bootnodes "enode://0d37b648eb95ac8d932e4bebe05beedd5d3f9aed85b61ba42e9d4f11766633583849607f87ea276ec6b4c838f6b19a2eda9bd24bd1a733eaa4c84f2e76528963@192.168.0.21:0?discport=30305" --networkid 177823 --ipcdisable --ws --ws.addr 192.168.0.3 --ws.port 5556 --ws.api eth,net,web3 --ws.origins '*' --ws.rpcprefix '/ws' --authrpc.port 8553 -7845-http --http.api eth,net,web3 --http.corsdomain '*' --http.port 5555 --http.addr 192.168.0.3 --http.vhosts '*'
 
 
 mkdir node3
@@ -17,10 +17,10 @@ mkdir node4
 geth init --datadir node3 clique-geth-2.json
 geth init --datadir node4 clique-geth-2.json
 bootnode -genkey boot2.key
-bootnode -nodekey boot2.key -addr :30310
+bootnode -nodekey boot2.key -addr 192.168.0.21:30310
 geth account import --datadir node3 private_key.txt
 geth account import --datadir node4 private_key.txt
 
-geth --datadir node3 --port 30311 --bootnodes enode://69c389e2114e60965718a0548aa27748e22e41724d64c092e3131a4cf344e37c960d4a11e50f28b298f5a328ef63b22733dbfe8604a81f23383157b4bcba8caf@127.0.0.1:0?discport=30310 --networkid 177824  --authrpc.port 8554 --mine --miner.etherbase 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21 --password password.txt -unlock 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21 --ipcdisable
+geth --datadir node3 --port 30311 --bootnodes "enode://731ffa5a305a80dc40e2261bb231360454fa42dfaa0e43ec012d722595d414a36c6f1b1595b297d82ef6421d92400f4629dca64386b1f4733a627d35d2a8a7a1@192.168.0.21:0?discport=30310" --networkid 177824  --authrpc.port 8554 --mine --miner.etherbase 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21 --password password.txt -unlock 0x2933B8E93Ceddfae69E92fC9ff2320582A907e21 --ipcdisable
 
-geth --datadir node4 --port 30312 --bootnodes enode://69c389e2114e60965718a0548aa27748e22e41724d64c092e3131a4cf344e37c960d4a11e50f28b298f5a328ef63b22733dbfe8604a81f23383157b4bcba8caf@127.0.0.1:0?discport=30310 --networkid 177824 --ipcdisable --ws --ws.addr 192.168.0.3 --ws.port 5566 --ws.api eth,net,web3 --ws.origins '*' --ws.rpcprefix '/ws' --authrpc.port 8555 --http.api eth,net,web3 --http.corsdomain '*' --http.port 5565 --http.addr 192.168.0.3 --http.vhosts '*'
+geth --datadir node4 --port 30312 --bootnodes "enode://731ffa5a305a80dc40e2261bb231360454fa42dfaa0e43ec012d722595d414a36c6f1b1595b297d82ef6421d92400f4629dca64386b1f4733a627d35d2a8a7a1@192.168.0.21:0?discport=30310" --networkid 177824 --ipcdisable --ws --ws.addr 192.168.0.3 --ws.port 5566 --ws.api eth,net,web3 --ws.origins '*' --ws.rpcprefix '/ws' --authrpc.port 8555 --http.api eth,net,web3 --http.corsdomain '*' --http.port 5565 --http.addr 192.168.0.3 --http.vhosts '*'
